@@ -5,7 +5,7 @@ public class Doctor {
     private String doc_license;
     private String doc_first_name;
     private String doc_last_name;
-    private String doc_proffession;
+    private String doc_profession;
     private String doc_area;
 
     public Integer getDoc_id() {
@@ -40,12 +40,12 @@ public class Doctor {
         this.doc_last_name = doc_last_name;
     }
 
-    public String getDoc_proffession() {
-        return doc_proffession;
+    public String getDoc_profession() {
+        return doc_profession;
     }
 
-    public void setDoc_proffession(String doc_proffession) {
-        this.doc_proffession = doc_proffession;
+    public void setDoc_profession(String doc_profession) {
+        this.doc_profession = doc_profession;
     }
 
     public String getDoc_area() {

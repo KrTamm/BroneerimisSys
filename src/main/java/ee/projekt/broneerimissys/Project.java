@@ -16,7 +16,7 @@ public class Project {
     private ProjectService projectService;
 
 
-    @GetMapping("/bronsystem/getDocList")
+    @GetMapping("/project/getDocList")
     public List<Doctor> getDoctorsList() {
         return projectService.getDoctorsList();
     }
