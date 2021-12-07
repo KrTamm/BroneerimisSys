@@ -28,4 +28,13 @@
             <column name="booking_time" type="time"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="1.02" author="Miilen">
+        <addColumn tableName="doctor">
+            <column name="doc_license" type="text">
+                <constraints unique="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
