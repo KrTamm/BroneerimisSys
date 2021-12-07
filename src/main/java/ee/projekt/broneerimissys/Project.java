@@ -15,12 +15,12 @@ public class Project {
     @Autowired
     private ProjectService projectService;
     //localhost:8095/project/createDoc
-    @PostMapping("project/createDoc")
+    @PostMapping("api/project/createDoc")
     public String createDoc(@RequestBody Doctor doctor) {
         return projectService.createDoc(doctor);
     }
 
-    @GetMapping("/project/getDocList")
+    @GetMapping("api/project/getDocList")
     public List<Doctor> getDoctorsList() {
         return projectService.getDoctorsList();
     }
