@@ -19,7 +19,7 @@ public class ProjectRepository {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public void createDoc(Doctor doctor) {
-        String sql = "INSERT INTO doctor (doc_first_name, doc_last_name, doc_proffession, doc_area, doc_license)" +
+        String sql = "INSERT INTO doctor (doc_first_name, doc_last_name, doc_profession, doc_area, doc_license)" +
                 "VALUES (:docFName, :docLName, :profession, :docArea, :docLicense);";
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("docFName", doctor.getDoc_first_name());

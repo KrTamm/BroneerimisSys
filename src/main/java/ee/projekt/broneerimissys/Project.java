@@ -20,7 +20,6 @@ public class Project {
         return projectService.createDoc(doctor);
     }
 
-
     @GetMapping("/project/getDocList")
     public List<Doctor> getDoctorsList() {
         return projectService.getDoctorsList();
