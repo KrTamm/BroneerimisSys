@@ -37,4 +37,12 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="2.01" author="Tamm">
+        <renameColumn tableName="doctor" oldColumnName="doc_proffession" newColumnName="doc_profession"/>
+        <addNotNullConstraint tableName="doctor" columnName="doc_first_name"/>
+        <addNotNullConstraint tableName="doctor" columnName="doc_last_name"/>
+        <addNotNullConstraint tableName="doctor" columnName="doc_profession"/>
+        <addNotNullConstraint tableName="doctor" columnName="doc_area"/>
+        <addNotNullConstraint tableName="doctor" columnName="doc_license"/>
+    </changeSet>
 </databaseChangeLog>
