@@ -5,4 +5,27 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
+    <changeSet id="1.01" author="Miilen">
+        <createTable tableName="doctor">
+            <column name="doc_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="doc_first_name" type="text"/>
+            <column name="doc_last_name" type="text"/>
+            <column name="doc_proffession" type="text"/>
+            <column name="doc_area" type="text"/>
+        </createTable>
+
+        <createTable tableName="booking">
+            <column name="booking_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="doc_id" type="int">
+                <constraints foreignKeyName="fk_booking_doctor" references="doctor(doc_id)"/>
+            </column>
+            <column name="user_email" type="text"/>
+            <column name="booking_date" type="date"/>
+            <column name="booking_time" type="time"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
