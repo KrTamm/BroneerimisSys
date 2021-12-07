@@ -12,36 +12,13 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
-//@RestController
-//public class Project {
-//
-//    @Autowired
-//    private NamedParameterJdbcTemplate jdbcTemplate;
-//
+@RestController
+public class Project {
 
-//    @GetMapping("/api/employees")
-//    public List<Employee> getEmployeeList(String orderBy) {
-//        String sql = "SELECT * FROM employee";
-//        HashMap<String, Object> paramMap = new HashMap<>();
-//        if (orderBy != null && !orderBy.isEmpty()) {
-//            sql += " ORDER BY " + orderBy;
-//        }
-//        List<Employee> result = jdbcTemplate.query(sql, paramMap, new EmployeeRowMapper());
-//        return result;
-//    }
-//
-//    static class EmployeeRowMapper implements RowMapper<Employee> {
-//
-//        @Override
-//        public Employee mapRow(ResultSet resultSet, int i) throws SQLException {
-//            Employee result = new Employee();
-//            result.setId(resultSet.getInt("id"));
-//            result.setFirstName(resultSet.getString("first_name"));
-//            result.setLastName(resultSet.getString("last_name"));
-//            result.setPosition(resultSet.getString("position"));
-//            result.setCountry(resultSet.getString("country"));
-//            return result;
-//        }
-//
-//    }
-//}
+    @Autowired
+    private ProjectService projectService;
+
+
+
+
+}
