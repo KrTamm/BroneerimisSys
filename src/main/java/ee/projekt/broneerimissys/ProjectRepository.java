@@ -45,7 +45,7 @@ public class ProjectRepository {
     }
 
     public List<Booking> getInfoForDocCard(Integer id) {
-        String sql = "SELECT * FROM booking WHERE doc_id=:id;";
+        String sql = "SELECT * FROM booking WHERE doc_id=:id AND user_email IS null;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
         return jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(Booking.class));
