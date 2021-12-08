@@ -1,20 +1,12 @@
 package DTOs;
 
 public class Doctor {
-    private Integer doc_id;
+
     private String doc_license;
     private String doc_first_name;
     private String doc_last_name;
     private String doc_profession;
     private String doc_area;
-
-    public Integer getDoc_id() {
-        return doc_id;
-    }
-
-    public void setDoc_id(Integer doc_id) {
-        this.doc_id = doc_id;
-    }
 
     public String getDoc_license() {
         return doc_license;
