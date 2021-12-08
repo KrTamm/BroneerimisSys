@@ -4,8 +4,10 @@ import DTOs.Doctor;
 import DTOs.Booking;
 import DTOs.InfoForDocCard;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -32,5 +34,10 @@ public class Project {
     @GetMapping("api/project/getInfoForDocCard")
     public List<InfoForDocCard> getInfoForDocCard() {
         return projectService.getInfoForDocCard();
+    }
+
+    @GetMapping("api/project/getInfoForDocDate/{kp}")
+    public List<InfoForDocCard> getInfoForDocDate(@PathVariable("kp") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate kp) {
+        return projectService.getInfoForDocDate(kp);
     }
 }

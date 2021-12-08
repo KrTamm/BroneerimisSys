@@ -7,6 +7,7 @@ import DTOs.InfoForDocCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,16 +30,26 @@ public class ProjectService {
         return projectRepository.getBookingsList();
     }
 
+
     public List<InfoForDocCard> getInfoForDocCard() {
         List<InfoForDocCard> result = new ArrayList<>();
         List<Doctor> docs = projectRepository.getDoctorsList();
-        for (int i = 0; i < docs.size(); i++) {
-            List<Booking> times = projectRepository.getInfoForDocCard(docs.get(i).getDocId());
-            InfoForDocCard docData = new InfoForDocCard(docs.get(i), times);
+        for (Doctor doc : docs) {
+            List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId());
+            InfoForDocCard docData = new InfoForDocCard(doc, times);
             result.add(docData);
         }
         return result;
     }
 
-
+    public List<InfoForDocCard> getInfoForDocDate(LocalDate kp) {
+        List<InfoForDocCard> result = new ArrayList<>();
+        List<Doctor> docs = projectRepository.getDoctorsList();
+        for (Doctor doc : docs) {
+            List<Booking> kpDate = projectRepository.getInfoForDocDate(kp, doc.getDocId());
+            InfoForDocCard docData = new InfoForDocCard(doc, kpDate);
+            result.add(docData);
+        }
+        return result;
+    }
 }

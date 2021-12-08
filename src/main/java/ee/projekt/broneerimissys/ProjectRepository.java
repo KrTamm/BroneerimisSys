@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +46,17 @@ public class ProjectRepository {
     }
 
     public List<Booking> getInfoForDocCard(Integer id) {
-        String sql = "SELECT * FROM booking WHERE doc_id=:id AND user_email IS null;";
+        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
+        return jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(Booking.class));
+    }
+
+    public List<Booking> getInfoForDocDate(LocalDate kp, Integer id) {
+        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null AND booking_date = :kp;";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        paramMap.put("kp", kp);
         return jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(Booking.class));
     }
 }
