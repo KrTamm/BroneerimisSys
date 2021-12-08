@@ -1,49 +1,49 @@
 package DTOs;
 
 public class Booking {
-    private Integer booking_id;
-    private Integer doc_id;
-    private String user_mail;
-    private String booking_date;
-    private String booking_time;
+    private Integer bookingId;
+    private Integer docId;
+    private String userMail;
+    private String bookingDate;
+    private String bookingTime;
 
-    public Integer getBooking_id() {
-        return booking_id;
+    public Integer getBookingId() {
+        return bookingId;
     }
 
-    public void setBooking_id(Integer booking_id) {
-        this.booking_id = booking_id;
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
     }
 
-    public Integer getDoc_id() {
-        return doc_id;
+    public Integer getDocId() {
+        return docId;
     }
 
-    public void setDoc_id(Integer doc_id) {
-        this.doc_id = doc_id;
+    public void setDocId(Integer docId) {
+        this.docId = docId;
     }
 
-    public String getUser_mail() {
-        return user_mail;
+    public String getUserMail() {
+        return userMail;
     }
 
-    public void setUser_mail(String user_mail) {
-        this.user_mail = user_mail;
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
     }
 
-    public String getBooking_date() {
-        return booking_date;
+    public String getBookingDate() {
+        return bookingDate;
     }
 
-    public void setBooking_date(String booking_date) {
-        this.booking_date = booking_date;
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
-    public String getBooking_time() {
-        return booking_time;
+    public String getBookingTime() {
+        return bookingTime;
     }
 
-    public void setBooking_time(String booking_time) {
-        this.booking_time = booking_time;
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime;
     }
 }

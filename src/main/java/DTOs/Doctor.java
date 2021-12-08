@@ -1,50 +1,58 @@
 package DTOs;
 
 public class Doctor {
+    private Integer docId;
+    private String docLicense;
+    private String docFirstName;
+    private String docLastName;
+    private String docProfession;
+    private String docArea;
 
-    private String doc_license;
-    private String doc_first_name;
-    private String doc_last_name;
-    private String doc_profession;
-    private String doc_area;
-
-    public String getDoc_license() {
-        return doc_license;
+    public Integer getDocId() {
+        return docId;
     }
 
-    public void setDoc_license(String doc_license) {
-        this.doc_license = doc_license;
+    public void setDocId(Integer docId) {
+        this.docId = docId;
     }
 
-    public String getDoc_first_name() {
-        return doc_first_name;
+    public String getDocLicense() {
+        return docLicense;
     }
 
-    public void setDoc_first_name(String doc_first_name) {
-        this.doc_first_name = doc_first_name;
+    public void setDocLicense(String docLicense) {
+        this.docLicense = docLicense;
     }
 
-    public String getDoc_last_name() {
-        return doc_last_name;
+    public String getDocFirstName() {
+        return docFirstName;
     }
 
-    public void setDoc_last_name(String doc_last_name) {
-        this.doc_last_name = doc_last_name;
+    public void setDocFirstName(String docFirstName) {
+        this.docFirstName = docFirstName;
     }
 
-    public String getDoc_profession() {
-        return doc_profession;
+    public String getDocLastName() {
+        return docLastName;
     }
 
-    public void setDoc_profession(String doc_profession) {
-        this.doc_profession = doc_profession;
+    public void setDocLastName(String docLastName) {
+        this.docLastName = docLastName;
     }
 
-    public String getDoc_area() {
-        return doc_area;
+    public String getDocProfession() {
+        return docProfession;
     }
 
-    public void setDoc_area(String doc_area) {
-        this.doc_area = doc_area;
+    public void setDocProfession(String docProfession) {
+        this.docProfession = docProfession;
+    }
+
+    public String getDocArea() {
+        return docArea;
+    }
+
+    public void setDocArea(String docArea) {
+        this.docArea = docArea;
     }
 }

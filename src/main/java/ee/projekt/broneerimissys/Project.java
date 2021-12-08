@@ -1,11 +1,10 @@
 package ee.projekt.broneerimissys;
 
 import DTOs.Doctor;
+import DTOs.Booking;
+import DTOs.InfoForDocCard;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +24,13 @@ public class Project {
         return projectService.getDoctorsList();
     }
 
+    @GetMapping("api/project/getBookingsList")
+    public List<Booking> getBookingsList() {
+        return projectService.getBookingsList();
+    }
 
+    @GetMapping("api/project/getInfoForDocCard")
+    public List<InfoForDocCard> getInfoForDocCard() {
+        return projectService.getInfoForDocCard();
+    }
 }
