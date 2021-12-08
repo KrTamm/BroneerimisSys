@@ -48,7 +48,9 @@ public class ProjectService {
         for (Doctor doc : docs) {
             List<Booking> kpDate = projectRepository.getInfoForDocDate(kp, doc.getDocId());
             InfoForDocCard docData = new InfoForDocCard(doc, kpDate);
-            result.add(docData);
+            if (docData.getBookingDate() != null) {
+                result.add(docData);
+            }
         }
         return result;
     }
