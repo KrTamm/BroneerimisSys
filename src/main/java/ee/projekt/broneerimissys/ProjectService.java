@@ -42,6 +42,7 @@ public class ProjectService {
         return result;
     }
 
+
     public List<InfoForDocCard> getInfoForDocDate(LocalDate kp) {
         List<InfoForDocCard> result = new ArrayList<>();
         List<Doctor> docs = projectRepository.getDoctorsList();
