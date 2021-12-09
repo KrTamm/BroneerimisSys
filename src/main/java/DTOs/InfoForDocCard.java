@@ -1,8 +1,11 @@
 package DTOs;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InfoForDocCard {
 
@@ -11,20 +14,37 @@ public class InfoForDocCard {
     private String docProfession;
     private String docLicense;
     private String docArea;
-    private String bookingDate;
-    private List bookingTime;
+    private Integer docId;
+    private List<BookingTime> bookingTimes = new ArrayList<>();
 
     public InfoForDocCard(Doctor doctor, List<Booking> times) {
+        this.docId = doctor.getDocId();
         this.docFirstName = doctor.getDocFirstName();
         this.docLastName = doctor.getDocLastName();
         this.docProfession = doctor.getDocProfession();
         this.docLicense = doctor.getDocLicense();
         this.docArea = doctor.getDocArea();
-        this.bookingTime = new ArrayList();
+        Map<String, List<String>> timeMap = new HashMap<>();
         for (Booking time : times) {
-            this.bookingDate = time.getBookingDate();
-            this.bookingTime.add(time.getBookingTime());
+            String date = time.getBookingDate();
+            List<String> timeList = timeMap.get(date);
+            if (timeList == null) {
+                timeList = new ArrayList<>();
+                timeMap.put(time.getBookingDate(), timeList);
+            }
+            timeList.add(time.getBookingTime());
         }
+        for (String key : timeMap.keySet()) {
+            bookingTimes.add(new BookingTime(key, timeMap.get(key)));
+        }
+    }
+
+    public Integer getDocId() {
+        return docId;
+    }
+
+    public void setDocId(Integer docId) {
+        this.docId = docId;
     }
 
     public String getDocFirstName() {
@@ -66,20 +86,21 @@ public class InfoForDocCard {
     public void setDocArea(String docArea) {
         this.docArea = docArea;
     }
-
-    public String getBookingDate() {
+/*
+    public Map getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(String bookingDate) {
+    public void setBookingDate(Map bookingDate) {
         this.bookingDate = bookingDate;
     }
+*/
 
-    public List getBookingTime() {
-        return bookingTime;
+    public List<BookingTime> getBookingTimes() {
+        return bookingTimes;
     }
 
-    public void setBookingTime(List bookingTime) {
-        this.bookingTime = bookingTime;
+    public void setBookingTimes(List<BookingTime> bookingTimes) {
+        this.bookingTimes = bookingTimes;
     }
 }

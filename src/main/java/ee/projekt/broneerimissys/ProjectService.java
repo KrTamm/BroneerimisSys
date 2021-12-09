@@ -35,9 +35,13 @@ public class ProjectService {
         List<InfoForDocCard> result = new ArrayList<>();
         List<Doctor> docs = projectRepository.getDoctorsList();
         for (Doctor doc : docs) {
-            List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId());
+            LocalDate from = LocalDate.now();
+            LocalDate to = from.plusDays(7);
+            List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId(), from, to);
             InfoForDocCard docData = new InfoForDocCard(doc, times);
-            result.add(docData);
+            if (!docData.getBookingTimes().isEmpty()) {
+                result.add(docData);
+            }
         }
         return result;
     }
@@ -49,7 +53,7 @@ public class ProjectService {
         for (Doctor doc : docs) {
             List<Booking> kpDate = projectRepository.getInfoForDocDate(kp, doc.getDocId());
             InfoForDocCard docData = new InfoForDocCard(doc, kpDate);
-            if (docData.getBookingDate() != null) {
+            if (!docData.getBookingTimes().isEmpty()) {
                 result.add(docData);
             }
         }

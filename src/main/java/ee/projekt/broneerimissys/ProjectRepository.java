@@ -45,10 +45,12 @@ public class ProjectRepository {
         return jdbcTemplate.query(sql, paraMap, new BeanPropertyRowMapper<>(Booking.class));
     }
 
-    public List<Booking> getInfoForDocCard(Integer id) {
-        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null;";
+    public List<Booking> getInfoForDocCard(Integer id, LocalDate from, LocalDate to) {
+        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null AND booking_date >= :from AND booking_date <= :to ORDER BY booking_date ASC, booking_time ASC;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
+        paramMap.put("from", from);
+        paramMap.put("to", to);
         return jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(Booking.class));
     }
 
