@@ -4,6 +4,7 @@ package ee.projekt.broneerimissys;
 import DTOs.Booking;
 import DTOs.Doctor;
 import DTOs.InfoForDocCard;
+import DTOs.NewBron;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +59,10 @@ public class ProjectService {
             }
         }
         return result;
+    }
+
+    public String createNewBron(NewBron bron) {
+        projectRepository.createNewBron(bron);
+        return "Uus broneerimisaeg loodud.";
     }
 }

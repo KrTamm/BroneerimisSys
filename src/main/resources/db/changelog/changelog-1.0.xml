@@ -45,4 +45,10 @@
         <addNotNullConstraint tableName="doctor" columnName="doc_area"/>
         <addNotNullConstraint tableName="doctor" columnName="doc_license"/>
     </changeSet>
+
+    <changeSet id="2.02" author="Tamm">
+        <addNotNullConstraint tableName="booking" columnName="doc_id"/>
+        <addNotNullConstraint tableName="booking" columnName="booking_date"/>
+        <addNotNullConstraint tableName="booking" columnName="booking_time"/>
+    </changeSet>
 </databaseChangeLog>
