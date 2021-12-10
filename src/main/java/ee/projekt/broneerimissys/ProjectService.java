@@ -70,4 +70,8 @@ public class ProjectService {
     public Integer makeBron(Booking teeBron, Integer id) {
         return projectRepository.makeBron(teeBron, id);
     }
+
+    public Integer cancelBron(Integer bronid) {
+        return projectRepository.cancelBron(bronid);
+    }
 }

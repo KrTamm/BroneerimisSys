@@ -54,4 +54,9 @@ public class Project {
     public Integer makeBron(@PathVariable("id") Integer id, @RequestBody Booking teeBron) {
         return projectService.makeBron(teeBron, id);
     }
+
+    @PutMapping("/api/project/cancelBron/{bronid}")
+    public Integer cancelBron(@PathVariable("bronid") Integer id) {
+        return projectService.cancelBron(id);
+    }
 }

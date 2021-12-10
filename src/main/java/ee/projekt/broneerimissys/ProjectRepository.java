@@ -81,4 +81,11 @@ public class ProjectRepository {
         paramMap.put("id", id);
         return jdbcTemplate.update(sql, paramMap);
     }
+
+    public Integer cancelBron(Integer bronid) {
+        String sql = "UPDATE booking SET user_email = null WHERE booking_id = :bronid;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("bronid", bronid);
+        return jdbcTemplate.update(sql, paramMap);
+    }
 }
