@@ -1,9 +1,6 @@
 package ee.projekt.broneerimissys;
 
-import DTOs.Booking;
-import DTOs.Doctor;
-import DTOs.InfoForDocCard;
-import DTOs.NewBron;
+import DTOs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -87,5 +84,13 @@ public class ProjectRepository {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("bronid", bronid);
         return jdbcTemplate.update(sql, paramMap);
+    }
+
+    public BronInfo bronInfo(Integer id) {
+        String sql = "SELECT doc_first_name, doc_last_name, doc_profession, doc_area, booking_date, booking_time FROM doctor a JOIN booking b on a.doc_id = b.doc_id WHERE booking_id = :id;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        List<BronInfo> result = jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(BronInfo.class));
+        return result.get(0);
     }
 }

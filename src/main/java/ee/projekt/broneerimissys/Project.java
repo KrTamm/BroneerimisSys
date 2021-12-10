@@ -1,9 +1,6 @@
 package ee.projekt.broneerimissys;
 
-import DTOs.Doctor;
-import DTOs.Booking;
-import DTOs.InfoForDocCard;
-import DTOs.NewBron;
+import DTOs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -58,5 +55,10 @@ public class Project {
     @PutMapping("/api/project/cancelBron/{bronid}")
     public Integer cancelBron(@PathVariable("bronid") Integer id) {
         return projectService.cancelBron(id);
+    }
+
+    @GetMapping("api/project/bronInfo/{id}")
+    public BronInfo bronInfo(@PathVariable("id") Integer id) {
+        return projectService.bronInfo(id);
     }
 }

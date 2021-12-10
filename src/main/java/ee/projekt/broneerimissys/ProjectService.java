@@ -1,10 +1,7 @@
 package ee.projekt.broneerimissys;
 
 
-import DTOs.Booking;
-import DTOs.Doctor;
-import DTOs.InfoForDocCard;
-import DTOs.NewBron;
+import DTOs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,5 +70,9 @@ public class ProjectService {
 
     public Integer cancelBron(Integer bronid) {
         return projectRepository.cancelBron(bronid);
+    }
+    public BronInfo bronInfo(Integer id) {
+        BronInfo result = projectRepository.bronInfo(id);
+        return result;
     }
 }
