@@ -47,7 +47,7 @@ public class ProjectRepository {
     }
 
     public List<Booking> getInfoForDocCard(Integer id, LocalDate from, LocalDate to) {
-        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null AND booking_date >= :from AND booking_date <= :to ORDER BY booking_date ASC, booking_time ASC;";
+        String sql = "SELECT * FROM booking WHERE doc_id =:id AND user_email IS null AND booking_date >= :from AND booking_date <= :to ORDER BY booking_date, booking_time;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
         paramMap.put("from", from);

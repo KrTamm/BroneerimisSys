@@ -1,29 +1,28 @@
 package DTOs;
 
-import java.util.List;
-
 public class BookingTime {
-    private String date;
-    private List<String> timeList;
 
-    public BookingTime(String date, List<String> timeList) {
-        this.date = date;
-        this.timeList = timeList;
+    private Integer bookingId;
+    private String bookingTime;
+
+    public BookingTime(Integer bookingId, String bookingTime) {
+        this.bookingId = bookingId;
+        this.bookingTime = bookingTime;
     }
 
-    public String getDate() {
-        return date;
+    public Integer getBookingId() {
+        return bookingId;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
     }
 
-    public List<String> getTimeList() {
-        return timeList;
+    public String getBookingTime() {
+        return bookingTime;
     }
 
-    public void setTimeList(List<String> timeList) {
-        this.timeList = timeList;
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime;
     }
 }

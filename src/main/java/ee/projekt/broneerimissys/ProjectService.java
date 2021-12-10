@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -65,4 +66,5 @@ public class ProjectService {
         projectRepository.createNewBron(bron);
         return "Uus broneerimisaeg loodud.";
     }
+
 }

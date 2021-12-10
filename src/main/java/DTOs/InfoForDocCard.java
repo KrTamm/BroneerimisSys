@@ -1,11 +1,7 @@
 package DTOs;
 
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InfoForDocCard {
 
@@ -15,7 +11,7 @@ public class InfoForDocCard {
     private String docLicense;
     private String docArea;
     private Integer docId;
-    private List<BookingTime> bookingTimes = new ArrayList<>();
+    private List<BookingDate> bookingTimes = new ArrayList<>();
 
     public InfoForDocCard(Doctor doctor, List<Booking> times) {
         this.docId = doctor.getDocId();
@@ -24,19 +20,20 @@ public class InfoForDocCard {
         this.docProfession = doctor.getDocProfession();
         this.docLicense = doctor.getDocLicense();
         this.docArea = doctor.getDocArea();
-        Map<String, List<String>> timeMap = new HashMap<>();
+        Map<String, List<BookingTime>> timeMap = new HashMap<>();
         for (Booking time : times) {
             String date = time.getBookingDate();
-            List<String> timeList = timeMap.get(date);
+            List<BookingTime> timeList = timeMap.get(date);
             if (timeList == null) {
                 timeList = new ArrayList<>();
                 timeMap.put(time.getBookingDate(), timeList);
             }
-            timeList.add(time.getBookingTime());
+            timeList.add(new BookingTime(time.getBookingId(), time.getBookingTime()));
         }
         for (String key : timeMap.keySet()) {
-            bookingTimes.add(new BookingTime(key, timeMap.get(key)));
+            bookingTimes.add(new BookingDate(key, timeMap.get(key)));
         }
+        bookingTimes.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
     }
 
     public Integer getDocId() {
@@ -96,11 +93,11 @@ public class InfoForDocCard {
     }
 */
 
-    public List<BookingTime> getBookingTimes() {
+    public List<BookingDate> getBookingTimes() {
         return bookingTimes;
     }
 
-    public void setBookingTimes(List<BookingTime> bookingTimes) {
+    public void setBookingTimes(List<BookingDate> bookingTimes) {
         this.bookingTimes = bookingTimes;
     }
 }
