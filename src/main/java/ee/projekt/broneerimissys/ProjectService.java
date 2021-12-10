@@ -5,10 +5,19 @@ import DTOs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.net.Authenticator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 @Service
 public class ProjectService {
@@ -71,8 +80,39 @@ public class ProjectService {
     public Integer cancelBron(Integer bronid) {
         return projectRepository.cancelBron(bronid);
     }
+
     public BronInfo bronInfo(Integer id) {
         BronInfo result = projectRepository.bronInfo(id);
         return result;
     }
+
+    public void send(Integer id, String toEmail, String subject, String body) throws MessagingException {
+        Properties prop = new Properties();
+        String meil = projectRepository.send(id);
+        prop.put("mail.smtp.auth", true);
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.ssl.trust", "*");
+
+
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("testitmeil@gmail.com", "Enter012345");
+                    }
+                });
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("testitmeil@gmail.com"));
+        message.setRecipients(
+                Message.RecipientType.TO,
+                InternetAddress.parse(meil)
+        );
+        message.setSubject("Broneerimise kinnitus");
+        message.setText("Broneering tehtud!");
+
+        Transport.send(message);
+
+    }
+
 }

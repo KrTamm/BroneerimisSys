@@ -93,4 +93,12 @@ public class ProjectRepository {
         List<BronInfo> result = jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(BronInfo.class));
         return result.get(0);
     }
+
+    public String send(Integer id) {
+        String sql = "SELECT user_email FROM booking WHERE booking_id = :id;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        String result = jdbcTemplate.queryForObject(sql, paramMap, String.class);
+        return result;
+    }
 }

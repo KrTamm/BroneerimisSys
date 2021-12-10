@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.mail.MessagingException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Properties;
@@ -60,5 +61,10 @@ public class Project {
     @GetMapping("api/project/bronInfo/{id}")
     public BronInfo bronInfo(@PathVariable("id") Integer id) {
         return projectService.bronInfo(id);
+    }
+
+    @GetMapping("api/test/{id}")
+    public void send(@PathVariable("id") Integer id, String toEmail, String subject, String body) throws MessagingException {
+        projectService.send(id, subject, body, toEmail);
     }
 }
