@@ -67,4 +67,7 @@ public class ProjectService {
         return "Uus broneerimisaeg loodud.";
     }
 
+    public Integer makeBron(Booking teeBron, Integer id) {
+        return projectRepository.makeBron(teeBron, id);
+    }
 }

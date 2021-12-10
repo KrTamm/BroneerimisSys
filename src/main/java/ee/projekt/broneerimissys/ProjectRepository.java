@@ -72,4 +72,13 @@ public class ProjectRepository {
         paramMap.put("kellaaeg", bron.getBookingTime());
         jdbcTemplate.update(sql, paramMap);
     }
+
+
+    public Integer makeBron(Booking teeBron, Integer id) {
+        String sql = "UPDATE booking SET user_email = :meil WHERE booking_id = :id;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("meil", teeBron.getUserMail());
+        paramMap.put("id", id);
+        return jdbcTemplate.update(sql, paramMap);
+    }
 }

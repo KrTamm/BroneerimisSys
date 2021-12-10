@@ -50,4 +50,8 @@ public class Project {
         return projectService.createNewBron(bron);
     }
 
+    @PutMapping("api/project/makeBron/{id}")
+    public Integer makeBron(@PathVariable("id") Integer id, @RequestBody Booking teeBron) {
+        return projectService.makeBron(teeBron, id);
+    }
 }
