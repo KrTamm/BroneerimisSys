@@ -3,7 +3,7 @@ package DTOs;
 public class Booking {
     private Integer bookingId;
     private Integer docId;
-    private String userMail;
+    private String userEmail;
     private String bookingDate;
     private String bookingTime;
 
@@ -23,12 +23,12 @@ public class Booking {
         this.docId = docId;
     }
 
-    public String getUserMail() {
-        return userMail;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserMail(String userMail) {
-        this.userMail = userMail;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getBookingDate() {

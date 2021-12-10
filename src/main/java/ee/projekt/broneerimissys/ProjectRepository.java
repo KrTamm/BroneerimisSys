@@ -41,7 +41,7 @@ public class ProjectRepository {
     }
 
     public List<Booking> getBookingsList() {
-        String sql = "SELECT * FROM booking ORDER BY booking.booking_date ASC;";
+        String sql = "SELECT * FROM booking;";
         Map<String, Object> paraMap = new HashMap<>();
         return jdbcTemplate.query(sql, paraMap, new BeanPropertyRowMapper<>(Booking.class));
     }
@@ -77,7 +77,7 @@ public class ProjectRepository {
     public Integer makeBron(Booking teeBron, Integer id) {
         String sql = "UPDATE booking SET user_email = :meil WHERE booking_id = :id;";
         HashMap<String, Object> paramMap = new HashMap<>();
-        paramMap.put("meil", teeBron.getUserMail());
+        paramMap.put("meil", teeBron.getUserEmail());
         paramMap.put("id", id);
         return jdbcTemplate.update(sql, paramMap);
     }
