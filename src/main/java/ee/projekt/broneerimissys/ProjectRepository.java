@@ -19,6 +19,21 @@ public class ProjectRepository {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
+    public String getPassword(String kasutajaNimi) {
+        String sql = "SELECT password FROM kasutajad WHERE kasutaja_nimi = :kasutajaNimi";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("kasutajaNimi", kasutajaNimi);
+        return jdbcTemplate.queryForObject(sql, paramMap, String.class);
+    }
+
+    public void createUserAccount(String kasutajaNimi, String password) {
+        String sql = "INSERT INTO kasutajad (kasutaja_nimi, password) VALUES (:kasutajaNimi, :password)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("kasutajaNimi", kasutajaNimi);
+        paramMap.put("password", password);
+        jdbcTemplate.update(sql, paramMap);
+    }
+
     public void createDoc(Doctor doctor) {
         String sql = "INSERT INTO doctor (doc_first_name, doc_last_name, doc_profession, doc_area, doc_license)" +
                 "VALUES (:docFName, :docLName, :profession, :docArea, :docLicense);";

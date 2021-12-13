@@ -51,4 +51,18 @@
         <addNotNullConstraint tableName="booking" columnName="booking_date"/>
         <addNotNullConstraint tableName="booking" columnName="booking_time"/>
     </changeSet>
+
+    <changeSet id="3.01" author="Miilen">
+        <createTable tableName="kasutajad">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="kasutaja_nimi" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

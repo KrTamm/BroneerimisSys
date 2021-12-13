@@ -2,21 +2,20 @@ package ee.projekt.broneerimissys;
 
 
 import DTOs.*;
+import ee.projekt.broneerimissys.exception.ApplicationException;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.net.Authenticator;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 @Service
@@ -24,6 +23,26 @@ public class ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public String login(String kasutajaNimi, String password) {
+        String encodedPassword = projectRepository.getPassword(kasutajaNimi);
+        if (passwordEncoder.matches(password, encodedPassword)) {
+            JwtBuilder builder = Jwts.builder()
+                    .signWith(SignatureAlgorithm.HS256, "secret")
+                    .claim("username", kasutajaNimi);
+            return builder.compact();
+        } else {
+            throw new ApplicationException("Parool on vale");
+        }
+    }
+
+    public void createUserAccount(UserPass usrpss) {
+        String encodedPassword = passwordEncoder.encode(usrpss.getPassword());
+        projectRepository.createUserAccount(usrpss.getKasutajaNimi(), encodedPassword);
+    }
 
     public String createDoc(Doctor doctor) {
         projectRepository.createDoc(doctor);

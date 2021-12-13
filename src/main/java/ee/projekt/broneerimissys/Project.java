@@ -18,53 +18,63 @@ public class Project {
     private ProjectService projectService;
 
     //localhost:8095/project/createDoc
-    @PostMapping("api/project/createDoc")
+    @PostMapping("api/protected/project/createDoc")
     public String createDoc(@RequestBody Doctor doctor) {
         return projectService.createDoc(doctor);
     }
 
-    @GetMapping("api/project/getDocList")
+    @GetMapping("api/public/project/getDocList")
     public List<Doctor> getDoctorsList() {
         return projectService.getDoctorsList();
     }
 
-    @GetMapping("api/project/getBookingsList")
+    @GetMapping("api/public/project/getBookingsList")
     public List<Booking> getBookingsList() {
         return projectService.getBookingsList();
     }
 
-    @GetMapping("api/project/getInfoForDocCard")
+    @GetMapping("api/public/project/getInfoForDocCard")
     public List<InfoForDocCard> getInfoForDocCard() {
         return projectService.getInfoForDocCard();
     }
 
-    @GetMapping("api/project/getInfoForDocDate/{kp}")
+    @GetMapping("api/public/project/getInfoForDocDate/{kp}")
     public List<InfoForDocCard> getInfoForDocDate(@PathVariable("kp") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate kp) {
         return projectService.getInfoForDocDate(kp);
     }
 
-    @PostMapping("api/project/createNewBron")
+    @PostMapping("api/protected/project/createNewBron")
     public String createNewBron(@RequestBody NewBron bron) {
         return projectService.createNewBron(bron);
     }
 
-    @PutMapping("api/project/makeBron/{id}")
+    @PutMapping("api/public/project/makeBron/{id}")
     public Integer makeBron(@PathVariable("id") Integer id, @RequestBody Booking teeBron) {
         return projectService.makeBron(teeBron, id);
     }
 
-    @PutMapping("/api/project/cancelBron/{bronid}")
+    @PutMapping("/api/protected/project/cancelBron/{bronid}")
     public Integer cancelBron(@PathVariable("bronid") Integer id) {
         return projectService.cancelBron(id);
     }
 
-    @GetMapping("api/project/bronInfo/{id}")
+    @GetMapping("api/public/project/bronInfo/{id}")
     public BronInfo bronInfo(@PathVariable("id") Integer id) {
         return projectService.bronInfo(id);
     }
 
-    @GetMapping("api/test/{id}")
+    @GetMapping("api/public/test/{id}")
     public void send(@PathVariable("id") Integer id, String toEmail, String subject, String body) throws MessagingException {
         projectService.send(id, subject, body, toEmail);
+    }
+
+    @PostMapping("api/public/user")
+    public void createUserAccount(@RequestBody UserPass usrpss) {
+        projectService.createUserAccount(usrpss);
+    }
+
+    @PostMapping("api/public/login")
+    public String login(@RequestBody UserPass usrpss) {
+        return projectService.login(usrpss.getKasutajaNimi(), usrpss.getPassword());
     }
 }
