@@ -39,9 +39,9 @@ public class ProjectService {
         }
     }
 
-    public void createUserAccount(UserPass usrpss) {
+    public void createAdminAccount(UserPass usrpss) {
         String encodedPassword = passwordEncoder.encode(usrpss.getPassword());
-        projectRepository.createUserAccount(usrpss.getKasutajaNimi(), encodedPassword);
+        projectRepository.createAdminAccount(usrpss.getKasutajaNimi(), encodedPassword);
     }
 
     public String createDoc(Doctor doctor) {
@@ -98,6 +98,14 @@ public class ProjectService {
 
     public Integer cancelBron(Integer bronid) {
         return projectRepository.cancelBron(bronid);
+    }
+
+    public void deleteTime(Integer id) {
+        projectRepository.deleteTime(id);
+    }
+
+    public void deleteDoc(Integer id) {
+        projectRepository.deleteDoc(id);
     }
 
     public BronInfo bronInfo(Integer id) {

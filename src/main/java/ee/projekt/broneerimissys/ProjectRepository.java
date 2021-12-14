@@ -26,7 +26,7 @@ public class ProjectRepository {
         return jdbcTemplate.queryForObject(sql, paramMap, String.class);
     }
 
-    public void createUserAccount(String kasutajaNimi, String password) {
+    public void createAdminAccount(String kasutajaNimi, String password) {
         String sql = "INSERT INTO kasutajad (kasutaja_nimi, password) VALUES (:kasutajaNimi, :password)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("kasutajaNimi", kasutajaNimi);
@@ -53,7 +53,7 @@ public class ProjectRepository {
     }
 
     public List<Booking> getBookingsList() {
-        String sql = "SELECT * FROM booking;";
+        String sql = "SELECT * FROM booking JOIN doctor on booking.doc_id = doctor.doc_id;";
         Map<String, Object> paraMap = new HashMap<>();
         return jdbcTemplate.query(sql, paraMap, new BeanPropertyRowMapper<>(Booking.class));
     }
@@ -99,6 +99,20 @@ public class ProjectRepository {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("bronid", bronid);
         return jdbcTemplate.update(sql, paramMap);
+    }
+
+    public void deleteTime(Integer id) {
+        String sql = "DELETE FROM booking WHERE booking_id = :bookid";
+        Map<String, Object> paraMap = new HashMap<>();
+        paraMap.put("bookid", id);
+        jdbcTemplate.update(sql, paraMap);
+    }
+
+    public void deleteDoc(Integer id) {
+        String sql = "DELETE FROM doctor WHERE doc_id = :docid";
+        Map<String, Object> paraMap = new HashMap<>();
+        paraMap.put("docid", id);
+        jdbcTemplate.update(sql, paraMap);
     }
 
     public BronInfo bronInfo(Integer id) {

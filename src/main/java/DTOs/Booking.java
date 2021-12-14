@@ -3,6 +3,8 @@ package DTOs;
 public class Booking {
     private Integer bookingId;
     private Integer docId;
+    private String docFirstName;
+    private String docLastName;
     private String userEmail;
     private String bookingDate;
     private String bookingTime;
@@ -21,6 +23,22 @@ public class Booking {
 
     public void setDocId(Integer docId) {
         this.docId = docId;
+    }
+
+    public String getDocFirstName() {
+        return docFirstName;
+    }
+
+    public void setDocFirstName(String docFirstName) {
+        this.docFirstName = docFirstName;
+    }
+
+    public String getDocLastName() {
+        return docLastName;
+    }
+
+    public void setDocLastName(String docLastName) {
+        this.docLastName = docLastName;
     }
 
     public String getUserEmail() {

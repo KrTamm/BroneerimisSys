@@ -69,12 +69,22 @@ public class Project {
     }
 
     @PostMapping("api/public/user")
-    public void createUserAccount(@RequestBody UserPass usrpss) {
-        projectService.createUserAccount(usrpss);
+    public void createAdminAccount(@RequestBody UserPass usrpss) {
+        projectService.createAdminAccount(usrpss);
     }
 
     @PostMapping("api/public/login")
     public String login(@RequestBody UserPass usrpss) {
         return projectService.login(usrpss.getKasutajaNimi(), usrpss.getPassword());
+    }
+
+    @DeleteMapping("/api/protected/project/deleteTime/{id}")
+    public void deleteTime(@PathVariable("id") int a) {
+        projectService.deleteTime(a);
+    }
+
+    @DeleteMapping("/api/protected/project/deleteDoc/{id}")
+    public void deleteDoc(@PathVariable("id") int a) {
+        projectService.deleteDoc(a);
     }
 }
