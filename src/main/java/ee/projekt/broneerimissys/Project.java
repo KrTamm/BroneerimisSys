@@ -43,9 +43,9 @@ public class Project {
         return projectService.getInfoForDocDate(kp);
     }
 
-    @PostMapping("api/protected/project/createNewBron")
-    public String createNewBron(@RequestBody NewBron bron) {
-        return projectService.createNewBron(bron);
+    @PostMapping("api/protected/project/createNewBron/{id}")
+    public String createNewBron(@PathVariable("id") Integer id, @RequestBody NewBron bron) {
+        return projectService.createNewBron(id, bron);
     }
 
     @PutMapping("api/public/project/makeBron/{id}")

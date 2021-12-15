@@ -87,8 +87,8 @@ public class ProjectService {
         return result;
     }
 
-    public String createNewBron(NewBron bron) {
-        projectRepository.createNewBron(bron);
+    public String createNewBron(Integer id, NewBron bron) {
+        projectRepository.createNewBron(id, bron);
         return "Uus broneerimisaeg loodud.";
     }
 

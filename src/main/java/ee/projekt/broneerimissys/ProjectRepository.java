@@ -75,11 +75,11 @@ public class ProjectRepository {
         return jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(Booking.class));
     }
 
-    public void createNewBron(NewBron bron) {
+    public void createNewBron(Integer id, NewBron bron) {
         String sql = "INSERT INTO booking (doc_id, user_email, booking_date, booking_time)" +
                 "VALUES (:id, null, :kuup, :kellaaeg);";
         HashMap<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", bron.getDocId());
+        paramMap.put("id", id);
         paramMap.put("kuup", bron.getBookingDate());
         paramMap.put("kellaaeg", bron.getBookingTime());
         jdbcTemplate.update(sql, paramMap);
