@@ -7,6 +7,7 @@ public class Doctor {
     private String docLastName;
     private String docProfession;
     private String docArea;
+    private String photo;
 
     public Integer getDocId() {
         return docId;
@@ -54,5 +55,13 @@ public class Doctor {
 
     public void setDocArea(String docArea) {
         this.docArea = docArea;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

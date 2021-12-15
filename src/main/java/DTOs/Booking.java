@@ -8,6 +8,15 @@ public class Booking {
     private String userEmail;
     private String bookingDate;
     private String bookingTime;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public Integer getBookingId() {
         return bookingId;
