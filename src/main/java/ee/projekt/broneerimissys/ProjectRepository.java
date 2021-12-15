@@ -52,6 +52,13 @@ public class ProjectRepository {
         return jdbcTemplate.query(sql, paraMap, new BeanPropertyRowMapper<>(Doctor.class));
     }
 
+    public List<Doctor> getSpecificDoctorsList(String profession) {
+        String sql = "SELECT * FROM doctor WHERE doc_profession = :profession ORDER BY doctor.doc_id, doctor.doc_license ASC;";
+        Map<String, Object> paraMap = new HashMap<>();
+        paraMap.put("profession", profession);
+        return jdbcTemplate.query(sql, paraMap, new BeanPropertyRowMapper<>(Doctor.class));
+    }
+
     public List<Booking> getBookingsList() {
         String sql = "SELECT * FROM booking JOIN doctor on booking.doc_id = doctor.doc_id;";
         Map<String, Object> paraMap = new HashMap<>();
@@ -130,4 +137,12 @@ public class ProjectRepository {
         String result = jdbcTemplate.queryForObject(sql, paramMap, String.class);
         return result;
     }
+
+    public List<ProfessionList> professionList() {
+        String sql = "SELECT DISTINCT doc_profession FROM doctor;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        List<ProfessionList> result = jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(ProfessionList.class));
+        return result;
+    }
+
 }

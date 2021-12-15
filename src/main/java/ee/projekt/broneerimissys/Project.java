@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Properties;
 
 @RestController
 public class Project {
@@ -33,9 +32,9 @@ public class Project {
         return projectService.getBookingsList();
     }
 
-    @GetMapping("api/public/project/getInfoForDocCard")
-    public List<InfoForDocCard> getInfoForDocCard() {
-        return projectService.getInfoForDocCard();
+    @GetMapping("api/public/project/getInfoForDocCard/{profession}")
+    public List<InfoForDocCard> getInfoForDocCard(@PathVariable("profession") String profession) {
+        return projectService.getInfoForDocCard(profession);
     }
 
     @GetMapping("api/public/project/getInfoForDocDate/{kp}")
@@ -86,5 +85,10 @@ public class Project {
     @DeleteMapping("/api/protected/project/deleteDoc/{id}")
     public void deleteDoc(@PathVariable("id") int a) {
         projectService.deleteDoc(a);
+    }
+
+    @GetMapping("api/public/professionList")
+    public List<ProfessionList> professionList() {
+        return projectService.professionList();
     }
 }

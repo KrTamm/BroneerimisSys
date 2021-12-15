@@ -16,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 @Service
@@ -57,20 +58,34 @@ public class ProjectService {
         return projectRepository.getBookingsList();
     }
 
-
-    public List<InfoForDocCard> getInfoForDocCard() {
+    public List<InfoForDocCard> getInfoForDocCard(String profession) {
         List<InfoForDocCard> result = new ArrayList<>();
-        List<Doctor> docs = projectRepository.getDoctorsList();
-        for (Doctor doc : docs) {
-            LocalDate from = LocalDate.now();
-            LocalDate to = from.plusDays(20);
-            List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId(), from, to);
-            InfoForDocCard docData = new InfoForDocCard(doc, times);
-            if (!docData.getBookingTimes().isEmpty()) {
-                result.add(docData);
+        if (Objects.equals(profession, "Kõik kangelased")) {
+            List<Doctor> docs = projectRepository.getDoctorsList();
+            for (Doctor doc : docs) {
+                LocalDate from = LocalDate.now();
+                LocalDate to = from.plusDays(7);
+                List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId(), from, to);
+                InfoForDocCard docData = new InfoForDocCard(doc, times);
+                if (!docData.getBookingTimes().isEmpty()) {
+                    result.add(docData);
+                }
             }
+            return result;
+        } else {
+            List<Doctor> docs = projectRepository.getSpecificDoctorsList(profession);
+            for (Doctor doc : docs) {
+                LocalDate from = LocalDate.now();
+                LocalDate to = from.plusDays(7);
+                List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId(), from, to);
+                InfoForDocCard docData = new InfoForDocCard(doc, times);
+                if (!docData.getBookingTimes().isEmpty()) {
+                    result.add(docData);
+                }
+            }
+            return result;
         }
-        return result;
+
     }
 
 
@@ -139,7 +154,10 @@ public class ProjectService {
         message.setText("Broneering tehtud!");
 
         Transport.send(message);
+    }
 
+    public List<ProfessionList> professionList() {
+        return projectRepository.professionList();
     }
 
 }
