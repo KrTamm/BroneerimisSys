@@ -9,6 +9,7 @@ public class BronInfo {
     private String docLastName;
     private String docProfession;
     private String docArea;
+    private String photo;
     private LocalDate bookingDate;
     private LocalTime bookingTime;
 
@@ -42,6 +43,14 @@ public class BronInfo {
 
     public void setDocArea(String docArea) {
         this.docArea = docArea;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public LocalDate getBookingDate() {

@@ -65,4 +65,10 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="4.00" author="Miilen">
+        <addColumn tableName="doctor">
+            <column name="photo" type="text"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

@@ -11,6 +11,7 @@ public class InfoForDocCard {
     private String docLicense;
     private String docArea;
     private Integer docId;
+    private String photo;
     private List<BookingDate> bookingTimes = new ArrayList<>();
 
     public InfoForDocCard(Doctor doctor, List<Booking> times) {
@@ -20,6 +21,7 @@ public class InfoForDocCard {
         this.docProfession = doctor.getDocProfession();
         this.docLicense = doctor.getDocLicense();
         this.docArea = doctor.getDocArea();
+        this.photo = doctor.getPhoto();
         Map<String, List<BookingTime>> timeMap = new HashMap<>();
         for (Booking time : times) {
             String date = time.getBookingDate();
@@ -34,6 +36,14 @@ public class InfoForDocCard {
             bookingTimes.add(new BookingDate(key, timeMap.get(key)));
         }
         bookingTimes.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Integer getDocId() {
@@ -83,15 +93,6 @@ public class InfoForDocCard {
     public void setDocArea(String docArea) {
         this.docArea = docArea;
     }
-/*
-    public Map getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(Map bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-*/
 
     public List<BookingDate> getBookingTimes() {
         return bookingTimes;
