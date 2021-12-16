@@ -160,4 +160,7 @@ public class ProjectService {
         return projectRepository.professionList();
     }
 
+    public HeroName heroName(Integer id) {
+        return projectRepository.heroName(id);
+    }
 }
