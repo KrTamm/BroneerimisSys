@@ -76,7 +76,7 @@ public class ProjectService {
             List<Doctor> docs = projectRepository.getSpecificDoctorsList(profession);
             for (Doctor doc : docs) {
                 LocalDate from = LocalDate.now();
-                LocalDate to = from.plusDays(7);
+                LocalDate to = from.plusDays(20);
                 List<Booking> times = projectRepository.getInfoForDocCard(doc.getDocId(), from, to);
                 InfoForDocCard docData = new InfoForDocCard(doc, times);
                 if (!docData.getBookingTimes().isEmpty()) {
