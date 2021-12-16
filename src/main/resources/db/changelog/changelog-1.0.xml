@@ -71,4 +71,7 @@
             <column name="photo" type="text"/>
         </addColumn>
     </changeSet>
+    <changeSet id="5.00" author="Tamm">
+        <dropUniqueConstraint tableName="doctor" uniqueColumns="doc_license" constraintName="doctor_doc_license_key"/>
+    </changeSet>
 </databaseChangeLog>
