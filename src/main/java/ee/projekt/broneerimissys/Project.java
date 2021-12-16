@@ -91,4 +91,9 @@ public class Project {
     public List<ProfessionList> professionList() {
         return projectService.professionList();
     }
+
+    @GetMapping("api/public/heroDetails/{id}")
+    public HeroName heroName(@PathVariable("id") Integer id) {
+        return projectService.heroName(id);
+    }
 }

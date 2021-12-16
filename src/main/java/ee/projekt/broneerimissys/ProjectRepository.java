@@ -145,4 +145,11 @@ public class ProjectRepository {
         return result;
     }
 
+    public HeroName heroName(Integer id) {
+        String sql = "SELECT doc_first_name, doc_last_name FROM doctor WHERE doc_id = :id;";
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        List<HeroName> result = jdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<>(HeroName.class));
+        return result.get(0);
+    }
 }
