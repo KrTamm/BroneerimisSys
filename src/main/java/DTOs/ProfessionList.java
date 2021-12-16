@@ -1,13 +1,13 @@
 package DTOs;
 
 public class ProfessionList {
-    private String docProfession;
+    private String docLicense;
 
-    public String getDocProfession() {
-        return docProfession;
+    public String getDocLicense() {
+        return docLicense;
     }
 
-    public void setDocProfession(String docProfession) {
-        this.docProfession = docProfession;
+    public void setDocLicense(String docLicense) {
+        this.docLicense = docLicense;
     }
 }
