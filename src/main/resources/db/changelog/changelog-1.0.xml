@@ -74,4 +74,7 @@
     <changeSet id="5.00" author="Tamm">
         <dropUniqueConstraint tableName="doctor" uniqueColumns="doc_license" constraintName="doctor_doc_license_key"/>
     </changeSet>
+    <changeSet id="6.00" author="Tamm">
+        <dropNotNullConstraint tableName="doctor" columnName="doc_first_name"/>
+    </changeSet>
 </databaseChangeLog>
