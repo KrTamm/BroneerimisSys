@@ -71,4 +71,5 @@
             <column name="photo" type="text"/>
         </addColumn>
     </changeSet>
+
 </databaseChangeLog>
