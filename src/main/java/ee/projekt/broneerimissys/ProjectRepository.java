@@ -103,7 +103,7 @@ public class ProjectRepository {
     }
 
     public Integer cancelBron(Integer bronid) {
-        String sql = "UPDATE booking SET user_email = null WHERE booking_id = :bronid;";
+        String sql = "UPDATE booking SET user_email = null, kirjeldus = null WHERE booking_id = :bronid;";
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("bronid", bronid);
         return jdbcTemplate.update(sql, paramMap);
