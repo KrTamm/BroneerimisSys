@@ -150,8 +150,8 @@ public class ProjectService {
                 Message.RecipientType.TO,
                 InternetAddress.parse(meil)
         );
-        message.setSubject("Broneerimise kinnitus");
-        message.setText("Broneering tehtud!");
+        message.setSubject("Kangelane on teel");
+        message.setText("Kallis abivajaja. Täname, et võtsid ühendust ning oma abipalvega annad meile tööd.");
 
         Transport.send(message);
     }
