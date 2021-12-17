@@ -94,8 +94,9 @@ public class ProjectRepository {
 
 
     public Integer makeBron(Booking teeBron, Integer id) {
-        String sql = "UPDATE booking SET user_email = :meil WHERE booking_id = :id;";
+        String sql = "UPDATE booking SET user_email = :meil, kirjeldus = :kirjeldus WHERE booking_id = :id;";
         HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("kirjeldus", teeBron.getKirjeldus());
         paramMap.put("meil", teeBron.getUserEmail());
         paramMap.put("id", id);
         return jdbcTemplate.update(sql, paramMap);

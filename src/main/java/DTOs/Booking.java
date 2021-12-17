@@ -9,6 +9,15 @@ public class Booking {
     private String bookingDate;
     private String bookingTime;
     private String photo;
+    private String kirjeldus;
+
+    public String getKirjeldus() {
+        return kirjeldus;
+    }
+
+    public void setKirjeldus(String kirjeldus) {
+        this.kirjeldus = kirjeldus;
+    }
 
     public String getPhoto() {
         return photo;
